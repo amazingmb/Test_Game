@@ -6,7 +6,7 @@ class Main:
     max_height = 5
     charactwe_alive = True
     character_won = False
-    monster_awake = False
+    monster_awake = True
     monster_awakened = False
     monster_move_per_turn = 2
 
@@ -18,7 +18,7 @@ class Main:
         self.character_position = [0,0]
 
     def place_monster(self):
-        self.monster_position = [1,1]
+        self.monster_position = [random2.randint(0,self.max_height - 1), random2.randint(0,self.max_width - 1)]
 
     def place_trap(self):
         self.trap_position = [0,1]
@@ -74,8 +74,13 @@ class Main:
                     sys.stdout.write("T")
                 elif(str(self.flask_position[0]) == x and str(self.flask_position[1]) == y):
                     sys.stdout.write("F")
-                sys.stdout.write('?')
-                sys.stdout.write('\r\n')
+                else:
+                    sys.stdout.write('?')
+            sys.stdout.write('\r\n')
 
 monster = Main()
+monster.place_character()
+monster.place_flask()
+monster.place_trap()
+monster.place_monster()
 monster.draw_grid()
