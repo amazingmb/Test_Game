@@ -12,7 +12,13 @@ class Main:
 
     def __init__(self):
         #self.display_menu()
-        pass
+        self.reset_current_game()
+
+    def reset_current_game(self):
+        self.character_position = [0,0]
+        self.monster_position = [1,0]
+        self.flask_position = [1,1]
+        self.trap_position = [0,1]
 
     def place_character(self):
         self.character_position = [0,0]
