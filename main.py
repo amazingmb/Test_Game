@@ -1,5 +1,5 @@
 import sys
-
+import random2
 
 class Main:
     max_width = 5
