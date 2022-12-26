@@ -6,7 +6,7 @@ class Main:
     max_height = 5
     charactwe_alive = True
     character_won = False
-    monster_awake = True
+    monster_awake = False
     monster_awakened = False
     monster_move_per_turn = 2
 
@@ -136,7 +136,20 @@ class Main:
         else:
             print("It`s a wrong way, try again! ")
             self.display_menu()
-          
+      
+    def collision_chek(self):
+        if(self.coordinate_collisions('player', 'monster')):
+            self.charactwe_alive = False
+            return True
+        elif(self.coordinate_collisions('player', 'flask')):
+            self.character_won = True
+            return True
+        elif(self.coordinate_collisions('player', 'trap')):
+            self.monster_awakened = True
+            self.trap_position = [-1, -1]
+            return True
+        return False
+
     def draw_grid(self):
         height = self.max_height
         width = self.max_width
@@ -156,7 +169,7 @@ class Main:
                 elif(str(self.flask_position[0]) == x and str(self.flask_position[1]) == y):
                     sys.stdout.write("F")
                 else:
-                    sys.stdout.write('?')
+                    sys.stdout.write('#')
             sys.stdout.write('\r\n')
 
 monster = Main()
