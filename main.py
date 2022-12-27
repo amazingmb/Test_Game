@@ -1,4 +1,4 @@
-from pprint import pprint
+
 import sys
 import random2
 
@@ -68,7 +68,7 @@ class Main:
         return True
 
     def display_menu(self):
-        menu_list = ['.New Game', '.[Save Game]', '.[Load Game]', '.Options', '.Exit']
+        menu_list = ['.New Game',  '.Options', '.Exit']
         print()
         for i in range (1,len(menu_list) + 1):
             print(str(i) + '' + menu_list[i - 1])
@@ -117,6 +117,31 @@ class Main:
         self.place_trap()
         self.draw_grid()
 
+    def create_setup(self):
+        self.reset_all_settings()
+        print('This setting lets you east settings for Monster!')
+        width_choice = input('Enter wide of game board! (Default: 5) : ')
+        try:
+            width_choice =int(width_choice)
+        except ValueError:
+            width_choice = 5
+        self.max_width = width_choice
+       
+        height_choice = input('Enter high of game board? (Default: 5) : ')
+        try:
+            height_choice =int(height_choice)
+        except ValueError:
+            height_choice = 5
+        self.max_height = height_choice
+
+        monster_move_count_choice = input('Enter how many moves can monster make? (Default: 2) : ')
+        try:
+            monster_move_count_choice =int(monster_move_count_choice)
+        except ValueError:
+            monster_move_count_choice = 2
+        self.monster_move_per_turn = monster_move_count_choice
+        self.setup_game()
+
     def menu_choice(self, choice):
         try:
             choice = int(choice)
@@ -126,12 +151,8 @@ class Main:
         if(choice == 1):
             self.start_new_game()
         elif(choice == 2):
-            pass
+            self.create_setup()
         elif(choice == 3):
-            pass
-        elif(choice == 4):
-            pass
-        elif(choice == 5):
             print("Bye, my hero!")
             sys.exit(0);
         else:
