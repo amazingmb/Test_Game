@@ -119,7 +119,7 @@ class Main:
 
     def create_setup(self):
         self.reset_all_settings()
-        print('This setting lets you east settings for Monster!')
+        print('This setting lets you set settings for Monster!')
         width_choice = input('Enter wide of game board! (Default: 5) : ')
         try:
             width_choice =int(width_choice)
@@ -255,10 +255,10 @@ class Main:
                         sys.stdout.write("M")
                     elif(char_x == x and char_y == y):
                         sys.stdout.write("X")
-                    elif(str(self.trap_position[0]) == x and str(self.trap_position[1]) == y):
-                        sys.stdout.write("T")
-                    elif(str(self.flask_position[0]) == x and str(self.flask_position[1]) == y):
-                        sys.stdout.write("F")
+                    #elif(str(self.trap_position[0]) == x and str(self.trap_position[1]) == y):
+                        #sys.stdout.write("T")
+                    #elif(str(self.flask_position[0]) == x and str(self.flask_position[1]) == y):
+                        #sys.stdout.write("F")
                     else:
                         sys.stdout.write('#')
                 sys.stdout.write('\r\n')
